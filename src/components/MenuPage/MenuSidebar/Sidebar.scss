@@ -1,0 +1,42 @@
+.sidebar {
+    background: #EDEDED;
+    width: 30%;
+    margin: 0 1em;
+    .side-menu {
+        margin-top: 5em;
+        justify-content: center;
+        h2{
+            margin: 0.4em 0;
+            padding-right: 9em;
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            .category-container {
+                width: auto;
+                padding: 0;
+                box-shadow: 0px 0px 5px 2px rgba(143,143,143,1);
+                -moz-box-shadow: 0px 0px 5px 2px rgba(143,143,143,1);
+                -webkit-box-shadow: 0px 0px 5px 2px rgba(143,143,143,1);
+            }
+        }
+
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 960px) {
+    .sidebar {
+        width: 100%;
+        .side-menu {
+            h2{
+                margin: 0.4em 0;
+                padding-right: 0;
+            }
+            .categories {
+                .category-container {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}

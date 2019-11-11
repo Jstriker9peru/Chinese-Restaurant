@@ -1,0 +1,24 @@
+.content {
+    background: #EDEDED;
+    width: 70%;
+    padding: 0 0 3em;
+    height: 100%;
+    .meals-container {
+        margin-left: 1.3em;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1024px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1em;
+        .meals-container {
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

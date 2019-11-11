@@ -1,0 +1,27 @@
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 0;
+    padding: 0 1em;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: auto;
+    max-width: 11em;
+    height: 3em;
+    border: none;
+    font: normal 100%/normal Arial, Helvetica, sans-serif;
+    color: white;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: #8b2a2a;
+    -webkit-transform:    skewX(-20deg);
+    transform:    skewX(-20deg);
+    .title {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-size: 1.6em;
+    }
+}

@@ -1,0 +1,112 @@
+.container {
+    display: flex;
+    background: #EDEDED;
+    min-height: 100vh;
+    .cart {
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            margin-left: 7em;
+        }
+        .cart-items {
+            margin-left: 4em;
+            margin-bottom: 4em;
+            .titles {
+                display: flex;
+                margin: 0.3em 0;
+                width: 100%;
+                font-weight: bold;
+                color: rgb(53, 53, 53);
+                .product-title {
+                    width: 26.5em;
+                    text-align: center;
+                }
+                .price-title {
+                    width: 5em;
+                    margin-right: 2em;
+                }
+                .quantity-title {
+                    width: 9em;
+                }
+            }
+            .empty {
+                width: 52em;
+                .no-items {
+                    padding-left: 1em;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1251px) and (max-width: 1340px) {
+    .container {
+        .cart {
+            .row {
+                margin-left: 4em;
+            }
+            .cart-items {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 890px) and (max-width: 1250px) {
+    .container {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .cart {
+            .row {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+            }
+            .cart-items {
+                margin: 0 2em;
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 889px) {
+    .container {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .cart {
+            .row {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+            }
+            .cart-items {
+                width: auto;
+                margin: 0 2em;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                .titles {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 769px) {
+    .container {
+        .cart {
+            .cart-items {
+                justify-content: center;
+            }
+        }
+    }
+}
+
+
