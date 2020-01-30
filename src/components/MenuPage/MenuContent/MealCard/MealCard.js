@@ -4,9 +4,11 @@ import { addToCart } from "../../../actions/cartActions";
 import "./MealCard.scss";
 
 const MealCard = ({ info, addToCart }) => {
-  const { name, imageURL, price, id } = info;
+  console.log('this is the info', info);
+  const { name, imageURL, price } = info;
+
   const handleClick = () => {
-    addToCart(id);
+    addToCart(info);
   };
 
   return (
@@ -29,10 +31,15 @@ const MealCard = ({ info, addToCart }) => {
   );
 };
 
+// const mapDispatchToProps = {
+//   dispatchAddToCart
+// };
+
+
 const mapDispatchToProps = dispatch => {
   return {
-    addToCart: id => {
-      dispatch(addToCart(id));
+    addToCart: info => {
+      dispatch(addToCart(info));
     }
   };
 };

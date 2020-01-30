@@ -1,24 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Content from './MenuContent/Content';
 import Sidebar from './MenuSidebar/Sidebar';
 import CategoryPage from './MenuContent/CategoryPage';
 import './MenuPage.scss';
 
 
-const MenuPage = ({ match }) => {
+const MenuPage = ({ match, categories }) => {
     const paramType = match.params.type;
     return (
         <div className="menu-page-container">
             {paramType ? (
                 <React.Fragment>
-                    <Sidebar />
-                    <Content param={paramType} />
+                    <Sidebar categories={categories} />
+                    <Content param={paramType} categories={categories} />
                 </React.Fragment>
             ) : (
-                <CategoryPage />
+                <CategoryPage categories={categories} />
             )}
         </div>
     )
 }
 
-export default MenuPage;
+const mapStateToProps = state => {
+    return {
+        categories: state.main.categories
+    }
+}
+
+export default connect(mapStateToProps, null)(MenuPage);

@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Category from './Category/Category';
-import { mealInfo } from '../../../data/MenuData';
 import './Sidebar.scss';
 
-const Sidebar = () => {
-    const [categoryNames] = useState(mealInfo);
+const Sidebar = ({ categories }) => {
     return (
         <div className="sidebar">
             <div className="side-menu">
@@ -13,10 +11,10 @@ const Sidebar = () => {
                 </div>
                 <div className="categories">
                     <div className="category-container">
-                        {categoryNames.map((name, index) => {
-                            const { category, meals } = name;
+                        {categories.map(category => {
+                            const { _id, name } = category;
                             return (
-                                <Category key={index} name={category} meals={meals} />
+                                <Category key={_id} name={name} />
                             )
                         })}
                     </div>

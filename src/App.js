@@ -1,41 +1,26 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getInitialData } from './components/reducers/mainReducer';
 import Navbar from './components/Navbar/Navbar';
 import HomePage from './components/HomePage/HomePage';
 import Footer from './components/Footer/Footer';
 import MenuPage from './components/MenuPage/MenuPage';
 import CartPage from './components/CartPage/CartPage';
 import ContactPage from './components/ContactPage/ContactPage';
+import CheckoutPage from './components/CheckoutPage/CheckoutPage';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { StripeProvider } from 'react-stripe-elements';
 import './App.scss';
 
-class App extends Component() {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null
-    }
-  }
+const App = ({ getInitialData }) => {
+  
+  useEffect(() => {
+    getInitialData()
+  }, [getInitialData])
 
-  componentDidMount() {
-    // Call our fetch function below once the component mounts
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
-  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message) 
-    }
-    return body;
-  };
-
-  render() {
-    return (
-      <Router>
+  return (
+    <Router>
+      <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
         <div className="App">
           <Navbar />
           <Route exact path={"/"} component={HomePage} />
@@ -44,11 +29,16 @@ class App extends Component() {
           <Route exact path="/menu/:type" component={MenuPage} />
           <Route exact path="/cart" component={CartPage} />
           <Route exact path="/contact" component={ContactPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Footer />
         </div>
-      </Router>
-    );
-  }
+      </StripeProvider>
+    </Router>
+  );
 }
 
-export default App;
+const actions = {
+  getInitialData
+}
+
+export default connect(null, actions)(App);

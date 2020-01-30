@@ -14,7 +14,7 @@ const CartContent = ({ items, update, remove, total, totalItems }) => {
         (  
             items.map(item => {
                 return (                    
-                    <SingleItem key={item.id} item={item} update={update} remove={remove} />                        
+                    <SingleItem key={item._id} item={item} update={update} remove={remove} />                        
                 )
             })
         ):
@@ -46,9 +46,9 @@ const CartContent = ({ items, update, remove, total, totalItems }) => {
 
 const mapStateToProps = state => {
     return {
-        items: state.addedItems,
-        total: state.total,
-        totalItems: state.totalItems
+        items: state.cart.addedItems,
+        total: state.cart.total,
+        totalItems: state.cart.totalItems
     }
 }
 
@@ -57,8 +57,8 @@ const mapDispatchToProps = dispatch => {
         update: (id, quantity) => {
             dispatch(changeQuantity(id, quantity));
         },
-        remove: (id, quantity) => {
-            dispatch(removeFromCart(id, quantity));
+        remove: (id) => {
+            dispatch(removeFromCart(id));
         }
     }
 }

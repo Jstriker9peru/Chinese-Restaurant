@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { mealInfo } from '../../../data/MenuData';
+import React from 'react';
+import { connect } from 'react-redux';
 import Title from '../../Title/Title';
 import MealCard from './MealCard/MealCard';
 import './Content.scss';
 
-const Content = ({ param }) => {
-    const [info, setInfo] = useState({ category: 'none', meals: [{id: 0}] });
-    useEffect(() => {
-        let correct = mealInfo.find(el => el.category === param);
-        setInfo(correct);
-    }, [param])
-
+const Content = ({ param, menuData }) => {
     
     return (
         <div className="content">
-            <Title title={info.category} />
+            <Title title={param} />
             <div className="meals-container">
-                {info && info.meals.map(meal => {
-                    const { id } = meal;
+                {menuData && menuData.filter(el => el.category === param).map(meal => {
+                    const id = meal._id;
                     return (
                         <MealCard key={id} info={meal} />
                     )
@@ -27,4 +21,10 @@ const Content = ({ param }) => {
     )
 }
 
-export default Content;
+const mapStateToProps = (state) => {
+    return {
+        menuData: state.main.menuData
+    }
+}
+
+export default connect(mapStateToProps, null)(Content);

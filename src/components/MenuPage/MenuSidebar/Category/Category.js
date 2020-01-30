@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Category.scss';
 
-const Category = ({ name, meals }) => {
+const Category = ({ name }) => {
     const [open, setOpen] = useState(false);
     const toggleOpen = () => {
         setOpen(!open);

@@ -1,9 +1,11 @@
 import React from 'react';
 import App from './App';
+import ReduxThunk from 'redux-thunk';
 import ReactDOM from 'react-dom';
-import cartReducer from './components/reducers/mainReducer';
+import cartReducer from './components/reducers/cartReducer';
+import { mainReducer } from './components/reducers/mainReducer';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
@@ -18,12 +20,16 @@ const persistConfig = {
     stateReconciler: autoMergeLevel2
 }
 
-const persistedReducer = persistReducer(persistConfig, cartReducer);
+const rootReducer = combineReducers({ main: mainReducer, cart: cartReducer })
 
-const store = createStore(
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const middlewares = [ReduxThunk];
+
+export const store = createStore(
     persistedReducer,
     composeWithDevTools(
-        applyMiddleware()
+        applyMiddleware(...middlewares)
     )
 );
 

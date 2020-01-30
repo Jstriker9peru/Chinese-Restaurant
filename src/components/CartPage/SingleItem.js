@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './SingleItem.scss';
 
 const SingleItem = ({ item, update, remove }) => {
-    const { id, name, imageURL, price, quantity } = item;
+    const { _id, name, imageURL, price, quantity } = item;
     const [disabled, setDisabled] = useState(false);
     const [quantityValue, changeQuantityValue] = useState(quantity);
+    
     useEffect(() => {
         setDisabled(quantityValue === quantity || quantityValue === "");
     }, [quantityValue, quantity])
@@ -30,15 +31,15 @@ const SingleItem = ({ item, update, remove }) => {
     }
     const handleUpdate = () => {
         if (quantityValue === 0) {
-            remove(id, quantityValue);
+            remove(_id);
         } else {
-            update(id, quantityValue);
+            update(_id, quantityValue);
             setDisabled(true);
         }
     }
     
     const removeItem = () => {
-        remove(id, quantityValue);
+        remove(_id);
     }
     return (
         <li className="meal-item">

@@ -10,7 +10,7 @@ const TotalSidebar = ({ total, totalItems, items }) => {
             </div>
             <div className="row">
                 <p>Cart Subtotal ({totalItems} Items): </p>
-                <span>${total}</span>
+                <span>${total.toFixed(2)}</span>
             </div>
             <div className="row">
                 <p>Tax (8.5%): </p>

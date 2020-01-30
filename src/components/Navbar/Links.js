@@ -30,7 +30,7 @@ const Links = ({ totalItems }) => {
 
 const mapStateToProps = state => {
     return {
-        totalItems: state.totalItems
+        totalItems: state.cart.totalItems
     }
 }
 

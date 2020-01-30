@@ -1,19 +1,16 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, CHANGE_QUANTITY } from './cartConstants.js';
 
-export const addToCart = (id) => { 
+export const addToCart = (addedItem) => {
     return { 
         type: ADD_TO_CART,
-        id 
+        addedItem
     }
 }
 
-export const removeFromCart = (id, quantity) => {
+export const removeFromCart = (id) => {
     return {
         type: REMOVE_FROM_CART,
-        payload: {
-            id,
-            quantity
-        }
+        id
     }
 }
 

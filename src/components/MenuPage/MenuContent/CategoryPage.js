@@ -1,10 +1,9 @@
 import React from 'react';
-import CategoryCard from './CategoryCard/CategoryCard';
-import { categories } from '../../../data/MenuData';
-import './CategoryPage.scss';
 import Title from '../../Title/Title';
+import CategoryCard from './CategoryCard/CategoryCard';
+import './CategoryPage.scss';
 
-const CategoryPage = () => {
+const CategoryPage = ({ categories }) => {
     return (
         <div className="category-page">
             <Title title={'Categories'} />
